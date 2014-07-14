@@ -49,4 +49,21 @@ public class RenovationController {
 		}
 		return rs;
 	}
+	
+	/**
+	 * 小区户型讨论
+	 * @param communityid
+	 * @return
+	 */
+	@RequestMapping(method=RequestMethod.GET,value="/getapartmentdiscuss/{apartmentid}")
+	@ResponseBody
+	public ResultInfo getapartmentsdiscuss(@PathVariable(value="apartmentid")int apartmentid){
+		ResultInfo rs = new ResultInfo(false);
+		try {
+		    rs = rvs.getApartmentdesigndiscuss(apartmentid);
+		} catch (Exception e) {
+			rs.setMsg("异常信息为:"+e.getMessage());
+		}
+		return rs;
+	}
 }

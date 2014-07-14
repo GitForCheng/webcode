@@ -4,21 +4,47 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Apartmentdesigndiscuss {
-	private int id;
-	private int apartmentdesign_id;
+	private Integer id;
+	private Integer apartmentdesign_id;
+	private String apartmentdesign_Name;
 	private String content;
-	private int insuser;
+	private Integer insuser;
+	private String insuser_Name;
 	private Date instime;
 
-	public int getId() {
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public void setInstime(Date instime) {
+		this.instime = instime;
+	}
+
+	public String getInsuser_Name() {
+		return insuser_Name;
+	}
+
+	public void setInsuser_Name(String insuserName) {
+		insuser_Name = insuserName;
+	}
+
+	public String getApartmentdesign_Name() {
+		return apartmentdesign_Name;
+	}
+
+	public void setApartmentdesign_Name(String apartmentdesignName) {
+		apartmentdesign_Name = apartmentdesignName;
+	}
+
+	public Integer getId() {
 		return id;
 	}
 
-	public int getApartmentdesign_id() {
+	public Integer getApartmentdesign_id() {
 		return apartmentdesign_id;
 	}
 
-	public void setApartmentdesign_id(int apartmentdesign_id) {
+	public void setApartmentdesign_id(Integer apartmentdesign_id) {
 		this.apartmentdesign_id = apartmentdesign_id;
 	}
 
@@ -30,11 +56,11 @@ public class Apartmentdesigndiscuss {
 		this.content = content;
 	}
 
-	public int getInsuser() {
+	public Integer getInsuser() {
 		return insuser;
 	}
 
-	public void setInsuser(int insuser) {
+	public void setInsuser(Integer insuser) {
 		this.insuser = insuser;
 	}
 
