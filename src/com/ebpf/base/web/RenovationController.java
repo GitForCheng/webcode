@@ -32,4 +32,21 @@ public class RenovationController {
 		}
 		return rs;
 	}
+	
+	/**
+	 * 小区户型设计列表
+	 * @param communityid
+	 * @return
+	 */
+	@RequestMapping(method=RequestMethod.GET,value="/getapartmentsdesign/{apartmentid}")
+	@ResponseBody
+	public ResultInfo getapartmentsdesign(@PathVariable(value="apartmentid")int apartmentid){
+		ResultInfo rs = new ResultInfo(false);
+		try {
+		    rs = rvs.getApartmentdesign(apartmentid);
+		} catch (Exception e) {
+			rs.setMsg("异常信息为:"+e.getMessage());
+		}
+		return rs;
+	}
 }
