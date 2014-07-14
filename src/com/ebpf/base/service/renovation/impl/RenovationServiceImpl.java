@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 import com.ebpf.base.model.renovation.Apartment;
 import com.ebpf.base.model.renovation.Apartmentdesign;
 import com.ebpf.base.model.renovation.Apartmentdesigndiscuss;
+import com.ebpf.base.model.renovation.Apartmentdesignpic;
 import com.ebpf.base.model.renovation.Apartmentdiscuss;
 import com.ebpf.base.model.sys.DAORowMapper;
 import com.ebpf.base.model.sys.ResultInfo;
@@ -81,9 +82,22 @@ public class RenovationServiceImpl implements RenovationService {
 		return result;
 	}
 
-	
+	/**
+	 * 户型设计效果图
+	 */
 	public ResultInfo getApartmentdesignpic(int apartmentdesignid) throws Exception {
-		return null;
+		ResultInfo result=new ResultInfo(false);
+		StringBuffer sql= new StringBuffer();
+		sql.append("select m.id,m.apartmentDesign_Id,m.picture_Path,m.description");
+		sql.append(" from t_renovation_apartmentdesignpic m ");
+		sql.append(" where m.apartmentDesign_Id= ? ");
+		List<Apartmentdesignpic> list = jdbcTemplate.query(sql.toString(), new Object[]{apartmentdesignid},new DAORowMapper<Apartmentdesignpic>(Apartmentdesignpic.class));
+		Map<String,Object> map = new HashMap<String, Object>();
+		map.put("addpics", list);
+		result.setData(map);
+		result.setMsg("查询户型设计讨论内容成功");
+		result.setResult(true);
+		return result;
 	}
 
 	/**
@@ -99,7 +113,7 @@ public class RenovationServiceImpl implements RenovationService {
 		sql.append(" where m.apartment_Id = g.id and m.insuser = u.id and m.apartment_Id= ? ");
 		List<Apartmentdiscuss> list = jdbcTemplate.query(sql.toString(), new Object[]{apartmentid},new DAORowMapper<Apartmentdiscuss>(Apartmentdiscuss.class));
 		Map<String,Object> map = new HashMap<String, Object>();
-		map.put("adds", list);
+		map.put("ads", list);
 		result.setData(map);
 		result.setMsg("查询户型设计讨论内容成功");
 		result.setResult(true);

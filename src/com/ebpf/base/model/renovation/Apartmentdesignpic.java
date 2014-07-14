@@ -1,20 +1,25 @@
 package com.ebpf.base.model.renovation;
 
 public class Apartmentdesignpic {
-	private int id;
-	private int apartmentdesign_id;
+	private Integer id;
+	private Integer apartmentdesign_id;
 	private String picture_path;
 	private String description;
 
-	public int getId() {
+	
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Integer getId() {
 		return id;
 	}
 
-	public int getApartmentdesign_id() {
+	public Integer getApartmentdesign_id() {
 		return apartmentdesign_id;
 	}
 
-	public void setApartmentdesign_id(int apartmentdesign_id) {
+	public void setApartmentdesign_id(Integer apartmentdesign_id) {
 		this.apartmentdesign_id = apartmentdesign_id;
 	}
 

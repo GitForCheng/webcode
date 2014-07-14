@@ -83,4 +83,21 @@ public class RenovationController {
 		}
 		return rs;
 	}
+	
+	/**
+	 * 户型设计效果图
+	 * @param apartmentdesignid
+	 * @return
+	 */
+	@RequestMapping(method=RequestMethod.GET,value="/getadp/{apartmentdesignid}")
+	@ResponseBody
+	public ResultInfo getApartmentdesignpic(@PathVariable(value="apartmentdesignid")int apartmentdesignid){
+		ResultInfo rs = new ResultInfo(false);
+		try {
+		    rs = rvs.getApartmentdesignpic(apartmentdesignid);
+		} catch (Exception e) {
+			rs.setMsg("异常信息为:"+e.getMessage());
+		}
+		return rs;
+	}
 }
