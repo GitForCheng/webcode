@@ -1,0 +1,5 @@
+#Sat May 24 12:23:15 CST 2014
+eclipse.preferences.version=1
+validator.Checked=EBRoot/WEB-INF/conf/springmvc.xml,EBRoot
+validator.Revalidate=true
+validator.Unchecked=EBRoot/WEB-INF
