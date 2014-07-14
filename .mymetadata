@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="EBPlatform"
+  id="myeclipse.1400826569467"
+  context-root="/app"
+  j2ee-spec="5.0"
+  archive="EBPlatform.war">
+  <attributes>
+    <attribute name="webrootdir" value="/EBRoot" />
+  </attributes>
+</project-module>
+
