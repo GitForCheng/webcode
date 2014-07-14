@@ -51,8 +51,25 @@ public class RenovationController {
 	}
 	
 	/**
+	 * 小区户型设计讨论
+	 * @param apartmentdesignid
+	 * @return
+	 */
+	@RequestMapping(method=RequestMethod.GET,value="/getapartmentdesigndiscuss/{apartmentdesignid}")
+	@ResponseBody
+	public ResultInfo getapartmentsdesigndiscuss(@PathVariable(value="apartmentdesignid")int apartmentdesignid){
+		ResultInfo rs = new ResultInfo(false);
+		try {
+		    rs = rvs.getApartmentdesigndiscuss(apartmentdesignid);
+		} catch (Exception e) {
+			rs.setMsg("异常信息为:"+e.getMessage());
+		}
+		return rs;
+	}
+	
+	/**
 	 * 小区户型讨论
-	 * @param communityid
+	 * @param apartmentdesignid
 	 * @return
 	 */
 	@RequestMapping(method=RequestMethod.GET,value="/getapartmentdiscuss/{apartmentid}")
@@ -60,7 +77,7 @@ public class RenovationController {
 	public ResultInfo getapartmentsdiscuss(@PathVariable(value="apartmentid")int apartmentid){
 		ResultInfo rs = new ResultInfo(false);
 		try {
-		    rs = rvs.getApartmentdesigndiscuss(apartmentid);
+		    rs = rvs.getApartmentdiscuss(apartmentid);
 		} catch (Exception e) {
 			rs.setMsg("异常信息为:"+e.getMessage());
 		}

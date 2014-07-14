@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 import com.ebpf.base.model.renovation.Apartment;
 import com.ebpf.base.model.renovation.Apartmentdesign;
 import com.ebpf.base.model.renovation.Apartmentdesigndiscuss;
+import com.ebpf.base.model.renovation.Apartmentdiscuss;
 import com.ebpf.base.model.sys.DAORowMapper;
 import com.ebpf.base.model.sys.ResultInfo;
 import com.ebpf.base.service.renovation.RenovationService;
@@ -60,6 +61,9 @@ public class RenovationServiceImpl implements RenovationService {
 	}
 
 
+	/**
+	 * 户型设计讨论
+	 */
 	public ResultInfo getApartmentdesigndiscuss(int apartmentdesignid) throws Exception {
 		ResultInfo result=new ResultInfo(false);
 		StringBuffer sql= new StringBuffer();
@@ -72,7 +76,7 @@ public class RenovationServiceImpl implements RenovationService {
 		Map<String,Object> map = new HashMap<String, Object>();
 		map.put("adds", list);
 		result.setData(map);
-		result.setMsg("查询户型讨论内容成功");
+		result.setMsg("查询户型设计讨论内容成功");
 		result.setResult(true);
 		return result;
 	}
@@ -82,9 +86,24 @@ public class RenovationServiceImpl implements RenovationService {
 		return null;
 	}
 
-	
+	/**
+	 * 户型讨论
+	 */
 	public ResultInfo getApartmentdiscuss(int apartmentid) throws Exception {
-		return null;
+		ResultInfo result=new ResultInfo(false);
+		StringBuffer sql= new StringBuffer();
+		sql.append("select m.id,m.insuser,u.name insuser_Name,m.instime,m.apartment_Id,g.title apartment_Name,m.content");
+		sql.append(" from t_renovation_apartmentdiscuss m,");
+		sql.append("      t_renovation_apartment g,");
+		sql.append("      t_sys_user u");
+		sql.append(" where m.apartment_Id = g.id and m.insuser = u.id and m.apartment_Id= ? ");
+		List<Apartmentdiscuss> list = jdbcTemplate.query(sql.toString(), new Object[]{apartmentid},new DAORowMapper<Apartmentdiscuss>(Apartmentdiscuss.class));
+		Map<String,Object> map = new HashMap<String, Object>();
+		map.put("adds", list);
+		result.setData(map);
+		result.setMsg("查询户型设计讨论内容成功");
+		result.setResult(true);
+		return result;
 	}
 
 }
