@@ -38,7 +38,7 @@ public class RenovationController {
 	 * @param communityid
 	 * @return
 	 */
-	@RequestMapping(method=RequestMethod.GET,value="/getapartmentsdesign/{apartmentid}")
+	@RequestMapping(method=RequestMethod.GET,value="/getapartmentsdesignlist/{apartmentid}")
 	@ResponseBody
 	public ResultInfo getapartmentsdesign(@PathVariable(value="apartmentid")int apartmentid){
 		ResultInfo rs = new ResultInfo(false);
