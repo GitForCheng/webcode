@@ -11,6 +11,7 @@ public class CommunityInfo {
 	private Integer decoteamId;
 	private String name;
 	private Integer state;
+	private String statName;
 	private Integer communityId;
 	private String communityName;
 	private String OwnerName;
@@ -23,7 +24,16 @@ public class CommunityInfo {
 		return sdf.format(instime);
 	}
 
-	
+	public String getStatName() {
+		return statName;
+	}
+
+
+	public void setStatName(String statName) {
+		this.statName = statName;
+	}
+
+
 	public Integer getOwnerId() {
 		return ownerId;
 	}

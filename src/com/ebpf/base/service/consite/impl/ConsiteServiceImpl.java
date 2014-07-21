@@ -29,7 +29,7 @@ public class ConsiteServiceImpl implements ConsiteService {
 		String sql = "select roleId from t_sys_user where id = ?";
 		int roleId = jdbcTemplate.queryForInt(sql, userId);
 		StringBuffer _sql = new StringBuffer();
-		_sql.append("select m.id,m.name,m.state,m.community_id communityId,c.Name as CommunityName,m.Owner_Id as ownerId,m.SuperVision_ID as SuperVisionId,m.Decoteam_Id as DecoteamId,u1.Name as OwnerName,u2.Name as SuperVisionName,u3.name as DecoteamName,instime" ); 
+		_sql.append("select m.id,m.name,m.state,case when m.state = 2 then '开工' when m.state = 4 then '墙面' when m.state = 8 then '家具' when m.state = 16 then '完工' end statName,m.community_id communityId,c.Name as CommunityName,m.Owner_Id as ownerId,m.SuperVision_ID as SuperVisionId,m.Decoteam_Id as DecoteamId,u1.Name as OwnerName,u2.Name as SuperVisionName,u3.name as DecoteamName,instime" ); 
 		_sql.append(" from " );
 	    _sql.append("  t_consite_info m," );
 		_sql.append("  t_sys_user u1," );
