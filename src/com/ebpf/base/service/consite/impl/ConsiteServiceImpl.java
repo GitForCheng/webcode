@@ -100,6 +100,19 @@ public class ConsiteServiceImpl implements ConsiteService {
 		}
 		return rs;
 	}
+
+	@Override
+	public ResultInfo modifyConsiteState(int consiteid, int state) throws Exception {
+		ResultInfo rs = new ResultInfo(false);
+		String sql = "update t_consite_info m set m.state = ? where m.id = ?";
+		if(this.jdbcTemplate.update(sql,new Object[]{state,consiteid})>0){
+			rs.setResult(true);
+			rs.setMsg("修改工地状态成功,工地ID["+consiteid+"]");
+		}else{
+			rs.setMsg("修改工地状态失败,工地ID["+consiteid+"]");
+		}
+		return rs;
+	}
 	
 	
 }

@@ -39,4 +39,12 @@ public interface ConsiteService{
 	 * @throws Exception
 	 */
 	public ResultInfo deleteConsitePic(int picId) throws Exception;
+	
+	/**
+	 * 修改工地状态
+	 * @param picId
+	 * @return
+	 * @throws Exception
+	 */
+	public ResultInfo modifyConsiteState(int consiteid,int state) throws Exception;
 }

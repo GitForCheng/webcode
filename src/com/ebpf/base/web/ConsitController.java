@@ -22,7 +22,7 @@ public class ConsitController {
 	private ConsiteService css;
 
 	/**
-	 * get consite msges
+	 * 获取工地信息
 	 * @param userId
 	 * @return
 	 */
@@ -40,7 +40,7 @@ public class ConsitController {
 	}
 	
 	/**
-	 * upload consite pic
+	 * 上传工地图片
 	 * @param request
 	 * @return
 	 */
@@ -61,7 +61,7 @@ public class ConsitController {
 	}
 	
 	/**
-	 * get All pices
+	 * 获取所有图片
 	 * @param consiteId
 	 * @return
 	 */
@@ -78,7 +78,7 @@ public class ConsitController {
 	}
 	
 	/**
-	 * delete 
+	 * 删除 
 	 * @return
 	 */
 	@RequestMapping(method=RequestMethod.GET,value="/deleteconsitepicbyid/{picid}")
@@ -91,5 +91,23 @@ public class ConsitController {
 			rs.setMsg(e.getMessage());
 		}
         return rs;		
+	}
+	
+	/**
+	 * 修改工地状态
+	 * @param consiteid
+	 * @param state
+	 * @return
+	 */
+	@RequestMapping(method=RequestMethod.GET,value="/modifyconsitestate/{consiteid}/{state}")
+	@ResponseBody
+	public ResultInfo modifyConsiteState(@PathVariable("consiteid")int consiteid,@PathVariable("state")int state){
+		ResultInfo rs = new ResultInfo(false);
+		try {
+			rs = css.modifyConsiteState(consiteid,state);
+		} catch (Exception e) {
+			rs.setMsg(e.getMessage());
+		}
+        return rs;
 	}
 }
