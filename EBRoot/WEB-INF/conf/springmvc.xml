@@ -61,8 +61,10 @@
 	    <property name="dataSource" ref="dataSource"/>
 	</bean>
 	<!--
-		静态资源 <mvc:resources mapping="/resources/**" location="/resources/**"/>
+		静态资源 
 	-->
+	<mvc:resources mapping="/themes/**" location="/themes/**"/>
+	<mvc:resources mapping="/js/**" location="/js/**"/>
 	<!-- 国际化 -->
 	<!-- i18n国际化-->
 	<mvc:interceptors>

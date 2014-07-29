@@ -1,11 +1,32 @@
 package com.ebpf.base.service.consite;
 
+import java.util.List;
+
 import org.springframework.web.multipart.MultipartFile;
 
+import com.ebpf.base.model.consite.CommunityInfo;
 import com.ebpf.base.model.sys.ResultInfo;
 
 public interface ConsiteService{
 
+	/**
+	 * 获取所有工地信息
+	 * @return
+	 */
+	public List<CommunityInfo> getallconsiteInfo();
+	
+	/**
+	 * 保存工地
+	 * @param name
+	 * @param communityId
+	 * @param state
+	 * @param yezhu
+	 * @param jianli
+	 * @param zhuangxiudui
+	 * @return
+	 */
+	public ResultInfo saveNewConsite(String name,int communityId,int state,int yezhu,int jianli,int zhuangxiudui);
+	
 	/**
 	 * 获取工地信息
 	 * @param userId

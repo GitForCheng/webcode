@@ -113,6 +113,36 @@ public class ConsiteServiceImpl implements ConsiteService {
 		}
 		return rs;
 	}
+
+	@Override
+	public List<CommunityInfo> getallconsiteInfo() {
+		StringBuffer _sql = new StringBuffer();
+		_sql.append("select m.id,m.name,m.state,case when m.state = 2 then '开工' when m.state = 4 then '墙面' when m.state = 8 then '家具' when m.state = 16 then '完工' end statName,m.community_id communityId,c.Name as CommunityName,m.Owner_Id as ownerId,m.SuperVision_ID as SuperVisionId,m.Decoteam_Id as DecoteamId,u1.Name as OwnerName,u2.Name as SuperVisionName,u3.name as DecoteamName,instime" ); 
+		_sql.append(" from " );
+	    _sql.append("  t_consite_info m," );
+		_sql.append("  t_sys_user u1," );
+        _sql.append("  t_sys_user u2," );
+        _sql.append("  t_sys_user u3," );
+        _sql.append("  t_base_community c" );
+        _sql.append(" where m.OWNER_ID=u1.ID AND" );
+        _sql.append("  m.SuperVision_ID=u2.ID AND" );
+        _sql.append("  m.Decoteam_Id=u3.ID AND" );
+        _sql.append("  m.COMMUNITY_ID=c.ID");
+		List<CommunityInfo> cis = this.jdbcTemplate.query(_sql.toString(), new DAORowMapper<CommunityInfo>(CommunityInfo.class));
+		return cis;
+	}
+
+	@Override
+	public ResultInfo saveNewConsite(String name, int communityId, int state,
+			int yezhu, int jianli, int zhuangxiudui) {
+		ResultInfo rs = new ResultInfo(false);
+		String sql = "insert into t_consite_info(name,state,owner_Id,SUPERVISION_ID,DECOTEAM_ID,COMMUNITY_ID,INSTIME) values(?,?,?,?,?,?,?)";
+		if(this.jdbcTemplate.update(sql, name,state,yezhu,jianli,zhuangxiudui,communityId,new Date())>0){
+			rs.setResult(true);
+			rs.setMsg("保存成功");
+		}
+		return rs;
+	}
 	
 	
 }

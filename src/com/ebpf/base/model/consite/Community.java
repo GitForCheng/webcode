@@ -6,15 +6,15 @@ package com.ebpf.base.model.consite;
  * 
  */
 public class Community {
-	private int id;
+	private Integer id;
 	private String name;
-	private int zone_Id;
+	private Integer zone_Id;
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -26,11 +26,11 @@ public class Community {
 		this.name = name;
 	}
 
-	public int getZone_Id() {
+	public Integer getZone_Id() {
 		return zone_Id;
 	}
 
-	public void setZone_Id(int zoneId) {
+	public void setZone_Id(Integer zoneId) {
 		zone_Id = zoneId;
 	}
 
