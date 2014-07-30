@@ -20,7 +20,7 @@ public class UserServiceImpl implements UserService {
 	private JdbcTemplate jdbcTemplate;
 	
 	public User login(String name, String psd) throws Exception{
-		String sql = "select * from t_Sys_User where name = ? and psd = ?";
+		String sql = "select u.ID,u.name,u.ROLEID,r.name as roleName from t_Sys_User u ,t_sys_role r where u.ROLEID=r.ID and u.name = ? and u.psd = ?";
 	    List<User> user = this.jdbcTemplate.query(sql,new String[]{name,psd},new DAORowMapper<User>(User.class));
 		if(user.size()==1){
 			return user.get(0);
