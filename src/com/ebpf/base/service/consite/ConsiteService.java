@@ -54,6 +54,14 @@ public interface ConsiteService{
 	public ResultInfo getAllConsitePices(int consiteId) throws Exception;
 	
 	/**
+	 * 获取工地相应状态图片列表信息
+	 * @param consiteId
+	 * @return
+	 * @throws Exception
+	 */
+	public ResultInfo getAllConsiteStatePices(int consiteId,int state) throws Exception;
+	
+	/**
 	 * 删除工地图片
 	 * @param picId
 	 * @return

@@ -143,6 +143,20 @@ public class ConsiteServiceImpl implements ConsiteService {
 		}
 		return rs;
 	}
+
+	@Override
+	public ResultInfo getAllConsiteStatePices(int consiteId, int state)
+			throws Exception {
+		ResultInfo result = new ResultInfo(false);
+		String sql = "select Consite_Id,Consite_State,Picture_Path,Description from t_consite_pic where Consite_Id = ? and CONSITE_STATE = ?";
+		List<ConsitePic> cps = this.jdbcTemplate.query(sql, new Object[]{consiteId,state},new DAORowMapper<ConsitePic>(ConsitePic.class));
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("consitePic", cps);
+		result.setResult(true);
+		result.setData(map);
+		result.setMsg("获取工地[工地号:"+consiteId+",状态:"+state+"]图片列表成功");
+		return result;
+	}
 	
 	
 }

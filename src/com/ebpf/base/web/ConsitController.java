@@ -126,6 +126,23 @@ public class ConsitController {
 	}
 	
 	/**
+	 * 获取相应状态所有图片
+	 * @param consiteId
+	 * @return
+	 */
+	@RequestMapping(method=RequestMethod.GET,value="/getallconsitepices/{consiteid}/{state}")
+	@ResponseBody
+	public ResultInfo getConsiteStatePices(@PathVariable("consiteid")int consiteId,@Value("#{config['imgServerUrl']}")String imgServerPath){
+		ResultInfo rs = new ResultInfo(false);
+		try {
+			rs = css.getAllConsitePices(consiteId);
+		} catch (Exception e) {
+			rs.setMsg(e.getMessage());
+		}
+		return rs;
+	}
+	
+	/**
 	 * 删除 
 	 * @return
 	 */
