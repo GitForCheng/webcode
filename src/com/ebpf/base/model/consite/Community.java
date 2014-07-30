@@ -9,6 +9,15 @@ public class Community {
 	private Integer id;
 	private String name;
 	private Integer zone_Id;
+    private String zoneName;
+    
+	public String getZoneName() {
+		return zoneName;
+	}
+
+	public void setZoneName(String zoneName) {
+		this.zoneName = zoneName;
+	}
 
 	public Integer getId() {
 		return id;
