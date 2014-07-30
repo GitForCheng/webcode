@@ -54,15 +54,15 @@ public class ConsiteServiceImpl implements ConsiteService {
 		return result;
 	}
 
-	public ResultInfo uploadConsitePic(MultipartFile file, int consiteId, int consiteState,String savePath) throws Exception {
+	public ResultInfo uploadConsitePic(MultipartFile file, int consiteId, int consiteState,String savePath,int uploaduser) throws Exception {
 		ResultInfo rs = new ResultInfo(false);
 		String tempName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date())+".jpg";
 		String path = "error";
 		Map<String,Object> map = new HashMap<String, Object>();
 		if(ImageUtils.uploadFile(file, savePath+consiteId+"/",tempName)){
 			path = consiteId+"/"+tempName;
-			String sql = "insert into t_consite_pic(Consite_Id,Consite_State,Picture_Path) values(?,?,?)";
-			if(this.jdbcTemplate.update(sql, consiteId,consiteState,path)>0){
+			String sql = "insert into t_consite_pic(Consite_Id,Consite_State,Picture_Path,UPLOAD_USER) values(?,?,?,?)";
+			if(this.jdbcTemplate.update(sql, consiteId,consiteState,path,uploaduser)>0){
 				map.put("path", path);
 				map.put("consiteId", consiteId);
 				rs.setResult(true);

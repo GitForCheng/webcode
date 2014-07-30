@@ -98,9 +98,10 @@ public class ConsitController {
 		MultipartHttpServletRequest multipartRequest  =  (MultipartHttpServletRequest) request;  
 		int consiteId = Integer.parseInt(multipartRequest.getParameter("consiteId"));
 		int consiteState = Integer.parseInt(multipartRequest.getParameter("consiteState"));
+		int uploaduser = Integer.parseInt(multipartRequest.getParameter("uploaduser"));
 		MultipartFile imgFile  =  multipartRequest.getFile("imgFile");
 		try {
-			rs = css.uploadConsitePic(imgFile, consiteId, consiteState,savePath);
+			rs = css.uploadConsitePic(imgFile, consiteId, consiteState,savePath,uploaduser);
 		} catch (Exception e) {
 			e.printStackTrace();
 			rs.setMsg("上传图片异常，异常信息为："+e.getMessage());

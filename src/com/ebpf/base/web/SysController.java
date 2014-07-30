@@ -34,6 +34,8 @@ public class SysController {
 			Map<String,Object> map = new HashMap<String,Object>();
 			map.put("roleId", ((User)userService.login(userName, psd)).getRoleId());
 			map.put("userId", ((User)userService.login(userName, psd)).getId());
+			map.put("userName", ((User)userService.login(userName, psd)).getName());
+			map.put("roleName", ((User)userService.login(userName, psd)).getRoleName());
 			resultInfo.setData(map);
 			resultInfo.setMsg("login success");
 		} catch (Exception e) {

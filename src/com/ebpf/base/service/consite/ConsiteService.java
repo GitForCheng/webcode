@@ -43,7 +43,7 @@ public interface ConsiteService{
 	 * @return
 	 * @throws Exception
 	 */
-	public ResultInfo uploadConsitePic(MultipartFile file,int consiteId,int consiteState,String path) throws Exception;
+	public ResultInfo uploadConsitePic(MultipartFile file,int consiteId,int consiteState,String path,int uploaduser) throws Exception;
 	
 	/**
 	 * 获取工地图片列表信息
