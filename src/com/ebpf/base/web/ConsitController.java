@@ -64,7 +64,11 @@ public class ConsitController {
     		@PathVariable("jianli")int jianli,
     		@PathVariable("zhuangxiudui")int zhuangxiudui){
     	ResultInfo rs = new ResultInfo(false);
-    	rs = css.saveNewConsite(consiteName, communityId, state, yezhu, jianli, zhuangxiudui);
+    	try {
+    		rs = css.saveNewConsite(consiteName, communityId, state, yezhu, jianli, zhuangxiudui);
+		} catch (Exception e) {
+			rs.setMsg(e.getMessage());
+		}
     	return rs;
     }
     
@@ -95,15 +99,14 @@ public class ConsitController {
 	@ResponseBody
 	public ResultInfo uploadPic(HttpServletRequest request,@Value("#{config['consitePicSavePath']}")String savePath){
 		ResultInfo rs = new ResultInfo(false);
-		MultipartHttpServletRequest multipartRequest  =  (MultipartHttpServletRequest) request;  
-		int consiteId = Integer.parseInt(multipartRequest.getParameter("consiteId"));
-		int consiteState = Integer.parseInt(multipartRequest.getParameter("consiteState"));
-		int uploaduser = Integer.parseInt(multipartRequest.getParameter("uploaduser"));
-		MultipartFile imgFile  =  multipartRequest.getFile("imgFile");
 		try {
+			MultipartHttpServletRequest multipartRequest  =  (MultipartHttpServletRequest) request;  
+			int consiteId = Integer.parseInt(multipartRequest.getParameter("consiteId"));
+			int consiteState = Integer.parseInt(multipartRequest.getParameter("consiteState"));
+			int uploaduser = Integer.parseInt(multipartRequest.getParameter("uploaduser"));
+			MultipartFile imgFile  =  multipartRequest.getFile("imgFile");
 			rs = css.uploadConsitePic(imgFile, consiteId, consiteState,savePath,uploaduser);
 		} catch (Exception e) {
-			e.printStackTrace();
 			rs.setMsg("上传图片异常，异常信息为："+e.getMessage());
 		}
 		return rs;
@@ -133,10 +136,10 @@ public class ConsitController {
 	 */
 	@RequestMapping(method=RequestMethod.GET,value="/getallconsitepices/{consiteid}/{state}")
 	@ResponseBody
-	public ResultInfo getConsiteStatePices(@PathVariable("consiteid")int consiteId,@Value("#{config['imgServerUrl']}")String imgServerPath){
+	public ResultInfo getConsiteStatePices(@PathVariable("consiteid")int consiteId,@Value("#{config['imgServerUrl']}")String imgServerPath,@PathVariable("state")int state){
 		ResultInfo rs = new ResultInfo(false);
 		try {
-			rs = css.getAllConsitePices(consiteId);
+			rs = css.getAllConsiteStatePices(consiteId,state);
 		} catch (Exception e) {
 			rs.setMsg(e.getMessage());
 		}
