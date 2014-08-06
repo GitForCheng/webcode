@@ -38,6 +38,17 @@ public class CommunityController {
 	}
 	
 	/**
+	 * 查询小区列表
+	 * @return
+	 */
+	@RequestMapping("getallcommunitybyname/{cName}")
+	@ResponseBody
+	public List<Community> getAllCommunity(@PathVariable(value="cName")String cName){
+		List<Community> cis = zs.getAllCommunityByName(cName);
+		return cis;
+	}
+	
+	/**
 	 * 新增
 	 * @param communityName
 	 * @param zoneId

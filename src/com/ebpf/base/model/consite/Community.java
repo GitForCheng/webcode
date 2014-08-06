@@ -10,7 +10,28 @@ public class Community {
 	private String name;
 	private Integer zone_Id;
     private String zoneName;
+    private String icon;
+    //户型数
+    private Long aCounts;
+    //户型装修方案
+    private Long designCounts;
     
+	public Long getaCounts() {
+		return aCounts;
+	}
+
+	public void setaCounts(Long aCounts) {
+		this.aCounts = aCounts;
+	}
+
+	public Long getDesignCounts() {
+		return designCounts;
+	}
+
+	public void setDesignCounts(Long designCounts) {
+		this.designCounts = designCounts;
+	}
+
 	public String getZoneName() {
 		return zoneName;
 	}
@@ -41,6 +62,14 @@ public class Community {
 
 	public void setZone_Id(Integer zoneId) {
 		zone_Id = zoneId;
+	}
+
+	public String getIcon() {
+		return icon;
+	}
+
+	public void setIcon(String icon) {
+		this.icon = icon;
 	}
 
 }

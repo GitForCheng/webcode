@@ -31,7 +31,11 @@ public class ZoneServiceImpl implements ZoneService {
 	
 	@Override
 	public List<Community> getAllCommunity() {
-		String sql = "select c.ID,c.Name,z.Name zoneName,z.ID zone_Id from t_base_community c ,t_base_zone z WHERE c.ZONE_ID=z.ID";
+		String sql = "select c.ID,c.Name,c.ICON,z.Name zoneName,z.ID zone_Id,"+
+		             "(select COUNT(1) from t_renovation_apartment w where w.COMMUNITY_ID=c.Id) as aCounts,"+
+		             "(select COUNT(1) from t_renovation_apartmentdesign n where n.APARTMENT_ID in (select b.id from  t_renovation_apartment b where b.COMMUNITY_ID=c.Id)) as designCounts"+
+		             " from t_base_community c ,t_base_zone z WHERE c.ZONE_ID=z.ID";
+		
 		List<Community> ccs = this.jdbcTemplate.query(sql,new DAORowMapper<Community>(Community.class));
 		if(ccs.size()>0){
 			return ccs;
@@ -50,6 +54,21 @@ public class ZoneServiceImpl implements ZoneService {
 			rs.setMsg("保存失败");
 		}
 		return rs;
+	}
+
+	@Override
+	public List<Community> getAllCommunityByName(String cName) {
+		String sql = "select c.ID,c.Name,c.ICON,z.Name zoneName,z.ID zone_Id,"+
+			        "(select COUNT(1) from t_renovation_apartment w where w.COMMUNITY_ID=c.Id) as aCounts,"+
+			        "(select COUNT(1) from t_renovation_apartmentdesign n where n.APARTMENT_ID in (select b.id from  t_renovation_apartment b where b.COMMUNITY_ID=c.Id)) as designCounts"+
+			        " from t_base_community c ,t_base_zone z WHERE c.ZONE_ID=z.ID and c.Name like '%"+cName+"%'";
+        
+		List<Community> ccs = this.jdbcTemplate.query(sql,new DAORowMapper<Community>(Community.class));
+		if(ccs.size()>0){
+		return ccs;
+		}else{
+		return null;
+		}
 	}
 
 }

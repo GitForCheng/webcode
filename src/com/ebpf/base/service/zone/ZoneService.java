@@ -21,6 +21,12 @@ public interface ZoneService {
 	public List<Community> getAllCommunity();
 	
 	/**
+	 * 根据名字获取所有小区
+	 * @return
+	 */
+	public List<Community> getAllCommunityByName(String cName);
+	
+	/**
 	 * 新增
 	 * @param communityName
 	 * @param zoneId
