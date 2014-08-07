@@ -134,4 +134,18 @@ public class RenovationServiceImpl implements RenovationService {
 		return rs;
 	}
 
+
+	/**
+     * 增加户型设计讨论
+     */
+	public ResultInfo insertApartmentDesignDiscuss(int apmtDesignId,int istUser, String content) throws Exception {
+		ResultInfo rs = new ResultInfo(false);
+		String sql = "insert into t_renovation_apartmentdesigndiscuss(APARTMENTDESIGN_ID,insuser,content,instime)values(?,?,?,?)";
+		if(this.jdbcTemplate.update(sql, apmtDesignId,istUser,content,new Date())>0){
+			rs.setResult(true);
+			rs.setMsg("保存成功");
+		}
+		return rs;
+	}
+
 }

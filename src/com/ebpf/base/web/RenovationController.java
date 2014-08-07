@@ -85,6 +85,22 @@ public class RenovationController {
 	}
 	
 	/**
+	 * 增加户型设计讨论
+	 * @return
+	 */
+	@RequestMapping("istapmtdesigndis/{apmtdesignid}/{istUser}/{content}")
+	@ResponseBody
+	public ResultInfo submit(@PathVariable(value="apmtdesignid")int apmtdesignid,@PathVariable(value="content")String content,@PathVariable(value="istUser")int istUser){
+		ResultInfo rs = new ResultInfo(false); 
+		try {
+			rs = rvs.insertApartmentDesignDiscuss(apmtdesignid, istUser, content);
+		} catch (Exception e) {
+			rs.setMsg(e.getMessage());
+		}
+		return rs;
+	}
+	
+	/**
 	 * 户型设计效果图
 	 * @param apartmentdesignid
 	 * @return
