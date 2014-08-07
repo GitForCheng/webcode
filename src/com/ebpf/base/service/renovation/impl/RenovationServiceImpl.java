@@ -95,7 +95,7 @@ public class RenovationServiceImpl implements RenovationService {
 		Map<String,Object> map = new HashMap<String, Object>();
 		map.put("addpics", list);
 		result.setData(map);
-		result.setMsg("查询户型设计讨论内容成功");
+		result.setMsg("查询户型设计效果图成功");
 		result.setResult(true);
 		return result;
 	}
