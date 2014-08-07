@@ -36,6 +36,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<li>
 					<span><a onclick="addPanel('工地管理','consite.htm')">工地管理</a></span>
 				</li>
+				<li>
+					<span><a onclick="addPanel('小区管理','community.htm')">小区管理</a></span>
+				</li>
 			</ul>
 		</li>
 	</ul>
