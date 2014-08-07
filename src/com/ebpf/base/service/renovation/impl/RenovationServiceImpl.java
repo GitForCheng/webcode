@@ -3,6 +3,7 @@
  */
 package com.ebpf.base.service.renovation.impl;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -101,7 +102,7 @@ public class RenovationServiceImpl implements RenovationService {
 	}
 
 	/**
-	 * 户型讨论
+	 * 获取户型讨论
 	 */
 	public ResultInfo getApartmentdiscuss(int apartmentid) throws Exception {
 		ResultInfo result=new ResultInfo(false);
@@ -118,6 +119,19 @@ public class RenovationServiceImpl implements RenovationService {
 		result.setMsg("查询户型设计讨论内容成功");
 		result.setResult(true);
 		return result;
+	}
+
+    /**
+     * 增加户型讨论
+     */
+	public ResultInfo insertApartmentDiscuss(int apmtId, int istUser,String content) throws Exception {
+		ResultInfo rs = new ResultInfo(false);
+		String sql = "insert into t_renovation_apartmentdiscuss(apartment_Id,insuser,content,instime)values(?,?,?,?)";
+		if(this.jdbcTemplate.update(sql, apmtId,istUser,content,new Date())>0){
+			rs.setResult(true);
+			rs.setMsg("保存成功");
+		}
+		return rs;
 	}
 
 }

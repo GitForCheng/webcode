@@ -21,6 +21,13 @@ public interface RenovationService {
 	public ResultInfo getApartmentdiscuss(int apartmentid) throws Exception;
 	
 	/**
+	 * 增加户型讨论
+	 * @return
+	 * @throws Exception
+	 */
+	public ResultInfo insertApartmentDiscuss(int apmtId,int istUser,String content) throws Exception;
+	
+	/**
 	 * 获取户型设计
 	 * @param apartmentid 户型ID
 	 * @return
