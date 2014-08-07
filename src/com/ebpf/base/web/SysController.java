@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ebpf.base.model.User;
 import com.ebpf.base.model.sys.ResultInfo;
-import com.ebpf.base.service.UserService;
+import com.ebpf.base.service.user.UserService;
 
 @Controller
 public class SysController {

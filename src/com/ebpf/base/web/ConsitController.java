@@ -17,8 +17,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ebpf.base.model.consite.CommunityInfo;
 import com.ebpf.base.model.sys.ResultInfo;
-import com.ebpf.base.service.UserService;
 import com.ebpf.base.service.consite.ConsiteService;
+import com.ebpf.base.service.user.UserService;
 
 @Controller
 public class ConsitController {

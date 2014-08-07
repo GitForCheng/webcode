@@ -68,7 +68,7 @@ public class RenovationController {
 	}
 	
 	/**
-	 * 小区户型讨论
+	 * 小区户型讨论列表
 	 * @param apartmentdesignid
 	 * @return
 	 */
@@ -96,7 +96,7 @@ public class RenovationController {
 		try {
 		    rs = rvs.getApartmentdesignpic(apartmentdesignid);
 		} catch (Exception e) {
-			rs.setMsg("异常信息为:"+e.getMessage());
+			rs.setMsg("查询户型设计效果图失败，异常信息为:"+e.getMessage());
 		}
 		return rs;
 	}
