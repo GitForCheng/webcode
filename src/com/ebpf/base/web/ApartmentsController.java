@@ -57,7 +57,7 @@ public class ApartmentsController {
 	 * 增加户型讨论
 	 * @return
 	 */
-	@RequestMapping("insertapmtdiscuss/{apmtid}/{istUser}/{content}")
+	@RequestMapping("isttapmtdiscuss/{apmtid}/{istUser}/{content}")
 	@ResponseBody
 	public ResultInfo submit(@PathVariable(value="apmtid")int apmtId,@PathVariable(value="content")String content,@PathVariable(value="istUser")int istUser){
 		ResultInfo rs = new ResultInfo(false); 
